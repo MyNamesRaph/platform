@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/Textures/platform1.png" type="Texture" id=1]
 
@@ -7,7 +7,7 @@ resource_name = "move_vert"
 length = 4.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("AnimationPlayer/platform1:position")
+tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -19,9 +19,19 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 96 ), Vector2( 0, 0 ), Vector2( 0, -96 ), Vector2( 0, 0 ) ]
 }
 
-[node name="AnimationPlayer" type="AnimationPlayer"]
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 72.0757, 24.4709 )
+
+[node name="platform-vert" type="Node2D"]
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="KinematicBody2D"]
+autoplay = "move_vert"
 anims/move_vert = SubResource( 1 )
 
-[node name="platform1" type="Sprite" parent="."]
-position = Vector2( 0, 26.4741 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
+shape = SubResource( 2 )
+
+[node name="platform1" type="Sprite" parent="KinematicBody2D"]
 texture = ExtResource( 1 )
