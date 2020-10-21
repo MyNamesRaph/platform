@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/Textures/platform2.png" type="Texture" id=1]
+[ext_resource path="res://assets/animations/move_vert.tres" type="Animation" id=2]
+[ext_resource path="res://assets/animations/move_horiz.tres" type="Animation" id=3]
+
+[node name="AnimationPlayer" type="AnimationPlayer"]
+anims/move_horiz = ExtResource( 3 )
+anims/move_vert = ExtResource( 2 )
+
+[node name="platform2" type="Sprite" parent="."]
+position = Vector2( -71.9395, 0 )
+texture = ExtResource( 1 )
