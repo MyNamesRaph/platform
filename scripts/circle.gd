@@ -22,6 +22,9 @@ func _physics_process(delta):
 		target = path_points[path_point_index]
 	
 	velocity = (target-position).normalized() * speed
-	velocity = move_and_slide(velocity)
+	var collision = move_and_collide(velocity*delta)
+	
+	if collision :
+		collision.collider.move_and_collide(velocity*delta)
 	
 	
