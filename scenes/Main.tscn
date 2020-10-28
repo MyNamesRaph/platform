@@ -1,21 +1,66 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/platform-circ.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/platform-vertical.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/platform-horizontal.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/platform-stationary.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/font/font.tres" type="DynamicFont" id=6]
+[ext_resource path="res://scenes/platform-end.tscn" type="PackedScene" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 71.0542, 6.37616 )
 
 [node name="Main" type="Node"]
 
 [node name="platform-horiz" parent="." instance=ExtResource( 3 )]
-position = Vector2( 166.273, 168.967 )
+position = Vector2( 379.793, 655.831 )
+
+[node name="platform-horiz2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 846.861, 588.612 )
 
 [node name="platform-vert" parent="." instance=ExtResource( 2 )]
-position = Vector2( 828.564, 162.231 )
+position = Vector2( 564.603, 95.4361 )
+
+[node name="platform-vert2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 696.62, 336.131 )
 
 [node name="platform-circ" parent="." instance=ExtResource( 1 )]
-position = Vector2( 465.822, 432.148 )
+position = Vector2( 996.937, 131.733 )
 
 [node name="player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 841.936, 76.4538 )
+position = Vector2( 106.97, 332.097 )
 scale = Vector2( 3, 3 )
+
+[node name="platform" parent="." instance=ExtResource( 5 )]
+position = Vector2( 101.612, 504.618 )
+
+[node name="platform2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 275.095, 282.064 )
+
+[node name="platform3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1106.33, 640.508 )
+
+[node name="platform5" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1195.92, 222.603 )
+
+[node name="win" type="RichTextLabel" parent="."]
+visible = false
+margin_right = 1920.0
+margin_bottom = 1072.0
+custom_fonts/mono_font = ExtResource( 6 )
+custom_fonts/normal_font = ExtResource( 6 )
+text = "Félicitation!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="end" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1425.44, 498.903 )
+
+[node name="Area2D" type="Area2D" parent="end"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="end/Area2D"]
+position = Vector2( -0.318359, -32.5628 )
+shape = SubResource( 1 )
+[connection signal="body_entered" from="end/Area2D" to="player" method="_on_Area2D_body_entered"]

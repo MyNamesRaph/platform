@@ -36,3 +36,8 @@ func _ctrl_player():
 	if jump and is_on_floor():
 		jumping = true
 		velocity.y = impulsion
+
+func _on_Area2D_body_entered(body):
+	print("You Win!")
+	get_parent().get_node("win").visible = true
+	queue_free()
