@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var speed = 3000
+var speed = 100
 var velocity = Vector2()
 var target = Vector2()
 
@@ -22,6 +22,6 @@ func _physics_process(delta):
 		target = path_points[path_point_index]
 	
 	velocity = (target-position).normalized() * speed
-	velocity = move_and_slide(velocity, delta)
+	velocity = move_and_slide(velocity)
 	
 	
