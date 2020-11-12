@@ -6,6 +6,7 @@ export var gravity = 1000
 export var impulsion = -800
 var jumping = false
 var velocity = Vector2()
+var lives = 3;
 
 func _process(delta):
 	_anim_player()
@@ -41,3 +42,10 @@ func _on_Area2D_body_entered(body):
 	print("You Win!")
 	get_parent().get_node("win").visible = true
 	queue_free()
+	
+func hurt() :
+	if lives > 0 :
+		lives = lives-1;
+		$Lives.text = "Vies: " + str(lives)
+	else :
+		queue_free();
