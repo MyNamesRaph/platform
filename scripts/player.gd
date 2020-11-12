@@ -48,4 +48,5 @@ func hurt() :
 		lives = lives-1;
 		$Lives.text = "Vies: " + str(lives)
 	else :
+		get_parent().get_node("lose").visible = true
 		queue_free();
